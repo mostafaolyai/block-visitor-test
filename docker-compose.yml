@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+    mongodb:
+        container_name: test-mongo
+        image: mongo
+        ports:
+            - 27047:27017
+        volumes:
+            - mongodb:/data/db
+
+networks:
+    test-network:
+        driver: bridge
+volumes:
+    mongodb:
+        driver: local
