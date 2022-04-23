@@ -1,7 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Validator } from '../../../common/validator/validator';
+import { ApiAddTargetRq } from './add';
 
-export class ApiAddTargetRq {
+export class ApiUpdateTargetRq extends ApiAddTargetRq {}
+export class ApiUpdateTargetRs {
+    @ApiProperty({ required: false, type: 'id', description: 'created id' })
+    id: string;
+
+    constructor(id: string) {
+        this.id = id;
+    }
+}
+/**
+ * 
     @ApiProperty({ description: 'value', type: Number, example: '0.5' })
     @Validator({
         required: true,
@@ -22,7 +33,6 @@ export class ApiAddTargetRq {
     @Validator({
         required: true,
         title: 'url',
-        check: { url: true },
     })
     url: string;
 
@@ -41,12 +51,4 @@ export class ApiAddTargetRq {
         geoState: string[];
         hour: string[];
     };
-}
-export class ApiAddTargetRs {
-    @ApiProperty({ required: false, type: 'id', description: 'created id' })
-    id: string;
-
-    constructor(id: string) {
-        this.id = id;
-    }
-}
+ */

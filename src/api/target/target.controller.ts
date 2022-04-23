@@ -1,8 +1,14 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
-import { ApiBody, ApiDefaultResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { ApiBody, ApiDefaultResponse, ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ObjectIdPipe } from '../../common/pipes/object-id';
 import { ValidatorPipe } from '../../common/validator/interface/validator.pipe';
 import { ApiAddTargetRq, ApiAddTargetRs } from './rq-rs/add';
+import { ApiUpdateTargetRq, ApiUpdateTargetRs } from './rq-rs/update';
 import { TargetService } from './target.service';
+import { Types } from 'mongoose';
+import { TargetModel } from '../../model/target';
+import { ApiGetTargetRs } from './rq-rs/get-target';
+import { ApiTargetListRs } from './rq-rs/target-list';
 
 @Controller('target')
 @ApiTags('Target')
@@ -14,7 +20,7 @@ export class TargetController {
     @ApiDefaultResponse({ type: ApiAddTargetRs })
     @Post()
     async addTarget(@Body(ValidatorPipe) body: ApiAddTargetRq): Promise<ApiAddTargetRs> {
-        return this.targetService.addTarget(body);
+        return this.targetService.add(body);
     }
 
     @ApiOperation({ summary: 'update target' })
@@ -22,28 +28,26 @@ export class TargetController {
     @ApiParam({ name: 'targetId', type: String, required: true, description: 'target id' })
     @ApiDefaultResponse({ type: ApiUpdateTargetRs })
     @Put(':targetId')
-    async customerUpdate(
+    async updateTarget(
         @Body(ValidatorPipe) body: ApiUpdateTargetRq,
         @Param('targetId', new ObjectIdPipe('targetId')) targetId: Types.ObjectId,
     ): Promise<ApiUpdateTargetRs> {
-        return this.targetService.updateTarget(targetId, body);
+        return this.targetService.update(targetId, body);
     }
 
-    // @ApiOperation({ summary: 'get target list' })
-    // @ApiParam({ name: 'targetId', type: String, required: true, description: 'target id' })
-    // @ApiDefaultResponse({ type: [String] })
-    // @Get()
-    // async customerCampaigns(
-    //     @Param('targetId', new ObjectIdPipe('targetId')) targetId: Types.ObjectId,): Promise<string[]> {
-    //     return await this.targetService.customerCampaigns(targetId);
-    // }
+    @ApiOperation({ summary: 'get target list' })
+    @ApiQuery({ name: 'page', type: Number, required: true, description: 'current page number' })
+    @ApiDefaultResponse({ type: ApiTargetListRs })
+    @Get()
+    async targetList(@Query('page') page: number): Promise<ApiTargetListRs> {
+        return this.targetService.list(page);
+    }
 
-    // @ApiOperation({ summary: 'get target by id' })
-    // @ApiParam({ name: 'targetId', type: String, required: true, description: 'target id' })
-    // @ApiDefaultResponse({ type: [String] })
-    // @Get(':targetId')
-    // async customerCampaigns(
-    //     @Param('targetId', new ObjectIdPipe('targetId')) targetId: Types.ObjectId,): Promise<string[]> {
-    //     return await this.targetService.customerCampaigns(targetEmail);
-    // }
+    @ApiOperation({ summary: 'get target by id' })
+    @ApiParam({ name: 'targetId', type: String, required: true, description: 'target id' })
+    @ApiDefaultResponse({ type: ApiGetTargetRs })
+    @Get(':targetId')
+    async getTargetById(@Param('targetId', new ObjectIdPipe('targetId')) targetId: Types.ObjectId): Promise<ApiGetTargetRs> {
+        return this.targetService.getById(targetId);
+    }
 }

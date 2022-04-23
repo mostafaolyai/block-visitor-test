@@ -8,6 +8,9 @@ export class TargetModel extends BaseModel {
     @Prop({ name: 'value', type: 'number', required: true })
     value: number;
 
+    @Prop({ name: 'url', required: true })
+    url: string;
+
     //it will be static
     @Prop({ name: 'maxAcceptsPerDay', type: 'number', required: true })
     maxAcceptsPerDay: number;

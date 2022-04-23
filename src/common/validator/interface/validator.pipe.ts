@@ -138,14 +138,6 @@ export class ValidatorPipe implements PipeTransform {
         // MOBILE
         if (check.mobile && !this.validationString.isMobile(value)) return this.error.push(this.message(ValidatorMessage.invalid, title));
 
-        // NATIONAL CODE
-        if (check.nationalCode && !this.validationString.isNationalCode(value))
-            return this.error.push(this.message(ValidatorMessage.invalid, title));
-
-        // BANK CARD
-        if (check.bankCard && !this.validationString.isBankCard(value))
-            return this.error.push(this.message(ValidatorMessage.invalid, title));
-
         // OBJECT ID
         if (check.objectId && !Types.ObjectId.isValid(value)) return this.error.push(this.message(ValidatorMessage.invalid, title));
 

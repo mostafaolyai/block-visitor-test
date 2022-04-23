@@ -1,8 +1,6 @@
 export interface ValidatorCheckInterface {
     email?: boolean;
     mobile?: boolean;
-    nationalCode?: boolean;
-    bankCard?: boolean;
     objectId?: boolean;
     domain?: boolean;
     url?: boolean;
