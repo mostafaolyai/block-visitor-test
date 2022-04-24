@@ -2,7 +2,7 @@
 
 1. run docker compose. it is on port 27047 => "docker compose up -d"
    <br/>
-     <div>db name is decision and as i mocked db to test so test db is decision-test.</div>
+      <div>db name is decision and as i mocked db to test so test db is decision-test.</div>
 2. run "npm run i"
    <br/>
 3. run project by "npm run start:dev"
@@ -16,4 +16,6 @@ NestJs
 Mongo
 <br/>
 Jest
+<br/>
+You can change something from .env
 <br/>
