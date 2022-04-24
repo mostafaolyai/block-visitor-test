@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "90b6eefe-8aff-4620-a53b-24d3e44ca8ea",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 0.5,\r\n  \"maxAcceptsPerDay\": 10,\r\n  \"url\": \"http://google.com\",\r\n  \"accept\": {\r\n    \"geoState\": [\r\n      \"ca\",\"usa\"\r\n    ],\r\n    \"hour\": [\r\n      \"13\",\"14\",\"15\"\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 0.5,\r\n  \"maxAcceptsPerDay\": 3,\r\n  \"url\": \"http://google.com\",\r\n  \"accept\": {\r\n    \"geoState\": [\r\n      \"ca\",\"usa\",\"ir\"\r\n    ],\r\n    \"hour\": [\r\n      \"13\",\"14\"\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/target/6263af369692ff489a6a4b3b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"target",
+						"6263af369692ff489a6a4b3b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/target/6263c0ae96d888e9d7f9d9e3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"target",
+						"6263c0ae96d888e9d7f9d9e3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/target",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"target"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "decision",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\"geoState\": \"ca\",\r\n            \"publisher\": \"abc\",\r\n            \"timestamp\":\"2018-07-19T09:28:59.513Z\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/route",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"route"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -43,7 +43,7 @@ export class ApiAddTargetRq {
     };
 }
 export class ApiAddTargetRs {
-    @ApiProperty({ required: false, type: 'id', description: 'created id' })
+    @ApiProperty({ required: false, type: 'string', description: 'created id' })
     id: string;
 
     constructor(id: string) {
