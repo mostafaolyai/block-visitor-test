@@ -16,8 +16,8 @@ describe('Get target list', () => {
         await disposeApp(app);
     }, 40000);
 
-    it('GET: ​/target => get valid target', async () => {
-        const result = await agent.get(`/target`).set('Connection', 'keep-alive').expect(200);
+    it('GET: ​/api/target => get valid target', async () => {
+        const result = await agent.get(`/api/target`).set('Connection', 'keep-alive').expect(200);
 
         const res = result.body;
         if (res.length > 0) throw new BadRequestException('result is invalid!');

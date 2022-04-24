@@ -19,9 +19,9 @@ describe('Update target', () => {
         await disposeApp(app);
     }, 40000);
 
-    it('PUT: ​/target => update valid target', async () => {
+    it('PUT: ​/api/target => update valid target', async () => {
         const result = await agent
-            .put(`/target/${targetId}`)
+            .put(`/api/target/${targetId}`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,
@@ -38,9 +38,9 @@ describe('Update target', () => {
         if (!res.id) throw new BadRequestException('result is invalid!');
     });
 
-    it('PUT: ​/target => update target by invalid url', async () => {
+    it('PUT: ​/api/target => update target by invalid url', async () => {
         await agent
-            .put(`/target/${targetId}`)
+            .put(`/api/target/${targetId}`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,
@@ -54,9 +54,9 @@ describe('Update target', () => {
             .expect(400);
     });
 
-    it('PUT: ​/target => update target by invalid url', async () => {
+    it('PUT: ​/api/target => update target by invalid url', async () => {
         await agent
-            .put(`/target/${targetId}`)
+            .put(`/api/target/${targetId}`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,
@@ -70,9 +70,9 @@ describe('Update target', () => {
             .expect(400);
     });
 
-    it('PUT: ​/target => update target by invalid url', async () => {
+    it('PUT: ​/api/target => update target by invalid url', async () => {
         await agent
-            .put(`/target/${targetId}`)
+            .put(`/api/target/${targetId}`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,

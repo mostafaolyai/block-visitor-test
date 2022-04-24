@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FilterQuery, Model, Types } from 'mongoose';
+import { Model, Types, FilterQuery } from 'mongoose';
 import { PaginationService } from '../../applicaton/pagination/pagination.service';
 import { TargetDB, TargetModel } from '../../model/target';
 import { ApiAddTargetRq, ApiAddTargetRs } from './rq-rs/add';
@@ -34,6 +34,10 @@ export class TargetService {
         const target = await this.targetModel.findOne({ _id: targetId });
         if (!target) throw new NotFoundException('target not found');
         return target;
+    }
+
+    async findTargetByCondition(condition: FilterQuery<TargetModel>): Promise<TargetModel> {
+        return this.targetModel.findOne({ ...condition });
     }
 
     async update(targetId: Types.ObjectId, body: ApiUpdateTargetRq): Promise<ApiUpdateTargetRs> {

@@ -15,9 +15,9 @@ describe('Add target', () => {
         await disposeApp(app);
     }, 40000);
 
-    it('POST: ​/target => add valid target', async () => {
+    it('POST: ​/api/target => add valid target', async () => {
         const result = await agent
-            .post(`/target`)
+            .post(`/api/target`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,
@@ -34,9 +34,9 @@ describe('Add target', () => {
         if (!res.id) throw new BadRequestException('result is invalid!');
     });
 
-    it('POST: ​/target => add target by invalid url', async () => {
+    it('POST: ​/api/target => add target by invalid url', async () => {
         await agent
-            .post(`/target`)
+            .post(`/api/target`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,
@@ -50,9 +50,9 @@ describe('Add target', () => {
             .expect(400);
     });
 
-    it('POST: ​/target => add target by invalid url', async () => {
+    it('POST: ​/api/target => add target by invalid url', async () => {
         await agent
-            .post(`/target`)
+            .post(`/api/target`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,
@@ -66,9 +66,9 @@ describe('Add target', () => {
             .expect(400);
     });
 
-    it('POST: ​/target => add target by invalid url', async () => {
+    it('POST: ​/api/target => add target by invalid url', async () => {
         await agent
-            .post(`/target`)
+            .post(`/api/target`)
             .send({
                 value: 0.5,
                 maxAcceptsPerDay: 5,

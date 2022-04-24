@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 //.env config
 import * as dotenv from 'dotenv';
 import { TargetModule } from './api/target/target.module';
+import { RouteModule } from './api/route/route.module';
 dotenv.config();
 
 @Module({
@@ -18,6 +19,7 @@ dotenv.config();
             connectionName: process.env.mongo_main_db,
         }),
         TargetModule,
+        RouteModule,
     ],
     providers: [],
     controllers: [],

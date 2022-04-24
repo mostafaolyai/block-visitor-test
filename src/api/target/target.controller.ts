@@ -6,11 +6,10 @@ import { ApiAddTargetRq, ApiAddTargetRs } from './rq-rs/add';
 import { ApiUpdateTargetRq, ApiUpdateTargetRs } from './rq-rs/update';
 import { TargetService } from './target.service';
 import { Types } from 'mongoose';
-import { TargetModel } from '../../model/target';
 import { ApiGetTargetRs } from './rq-rs/get-target';
 import { ApiTargetListRs } from './rq-rs/target-list';
 
-@Controller('target')
+@Controller('api/target')
 @ApiTags('Target')
 export class TargetController {
     constructor(private readonly targetService: TargetService) {}

@@ -29,7 +29,7 @@ export async function initApp(): Promise<INestApplication> {
             await mongoose.connection.db.collection('target').insertMany([
                 {
                     value: 0.5,
-                    url: 'http://google.com',
+                    url: 'http://yahoo.com',
                     maxAcceptsPerDay: 10,
                     maxAcceptsPerDayRemained: 10,
                     accept: {
@@ -44,8 +44,8 @@ export async function initApp(): Promise<INestApplication> {
                     maxAcceptsPerDay: 10,
                     maxAcceptsPerDayRemained: 0,
                     accept: {
-                        geoState: ['ca', 'usa'],
-                        hour: ['13', '14', '15'],
+                        geoState: ['ca', 'ir'],
+                        hour: ['9', '10', '11'],
                     },
                     created: new Date(),
                 },

@@ -9,5 +9,6 @@ import { TargetService } from './target.service';
     imports: [MongooseModule.forFeature([{ name: TargetDB, schema: TargetSchema }]), PaginationModule],
     controllers: [TargetController],
     providers: [TargetService],
+    exports: [TargetService],
 })
 export class TargetModule {}
